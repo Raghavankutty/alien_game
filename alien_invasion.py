@@ -1,6 +1,7 @@
 import sys
 import pygame
 from settings import Settings
+from ship import Ship
 
 class AlienInversion:
     """overall class to mange game assets and behaviour."""
@@ -12,6 +13,8 @@ class AlienInversion:
         
         self.screen=pygame.display.set_mode((self.settings.screen_width,self.settings.screen_height))
         pygame.display.set_caption("Alien Inversion")
+        self.ship = Ship(self)
+
 
         #set the background colour.
         self.bg_colour = (230,230,230)
@@ -26,6 +29,7 @@ class AlienInversion:
 
             #redraw the screen during each pass through the loop.
             self.screen.fill(self.settings.bg_colour)
+            self.ship.blitme()
 
             #make the most recently drawn screen visible.
             pygame.display.flip()
