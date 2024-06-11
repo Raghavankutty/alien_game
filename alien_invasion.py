@@ -6,6 +6,7 @@ class AlienInversion:
     def __init__(self):
         """initialize the game,and create game resources"""
         pygame.init()
+        self.clock = pygame.time.Clock()
 
         self.screen=pygame.display.set_mode((1200, 800))
 
@@ -19,6 +20,7 @@ class AlienInversion:
 
             #make the most recently drawn screen visible.
             pygame.display.flip()
+            self.clock.tick(60)
         
 if __name__=='__main__':
     #make a game instance,and run the game.
