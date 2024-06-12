@@ -22,10 +22,7 @@ class AlienInversion:
     def run_game(self):
         """start the main loop for the game."""
         while True:
-            #watch for keyboard and mouse events .
-            for event in pygame.event.get():
-                if event.type==pygame.QUIT:
-                    sys.exit()
+            self._check_events()
 
             #redraw the screen during each pass through the loop.
             self.screen.fill(self.settings.bg_colour)
@@ -34,6 +31,13 @@ class AlienInversion:
             #make the most recently drawn screen visible.
             pygame.display.flip()
             self.clock.tick(60)
+
+    def _check_events(self):
+        #watch for keyboard and mouse events .
+                for event in pygame.event.get():
+                    if event.type==pygame.QUIT:
+                        sys.exit()
+
         
 if __name__=='__main__':
     #make a game instance,and run the game.
