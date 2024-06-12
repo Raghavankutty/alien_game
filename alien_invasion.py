@@ -31,6 +31,9 @@ class AlienInversion:
                 for event in pygame.event.get():
                     if event.type==pygame.QUIT:
                         sys.exit()
+                    elif event.type  == pygame.KEYDOWN:
+                         #move the ship to the right.
+                         self.ship.rect.x += 1
                     
     def _update_screen(self):
          #update the screen during each pass through the loop.
