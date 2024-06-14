@@ -1,18 +1,17 @@
-from typing import Any
 import pygame
-from pygame.sprite import _Group, Sprite
+from pygame.sprite import Sprite
 
 class Bullet(Sprite):
     """a class to manage fired from the ship"""
 
     def __init__(self, ai_game):
-        super.screen.__init__()
+        super().__init__()
         self.screen = ai_game.screen
         self.settings = ai_game.settings
         self.color = self.settings.bullet_color
 
         #create a bullect rect at (0,0) and then set correct position
-        self.rect = pygame.Rect(0,0,self.settings.bullet_width,self.settings.settings.bullet_height)
+        self.rect = pygame.Rect(0,0,self.settings.bullet_width,self.settings.bullet_height)
         self.rect.midtop = ai_game.ship.rect.midtop
 
         #store the bullet 's postion as a float
@@ -25,6 +24,6 @@ class Bullet(Sprite):
         #update the rect position
         self.rect.y = self.y
 
-    def draw_bullet:
-    """ draw the bullet to the screen"""
-    pygame.draw.rect(self.screen,self.color,self.rect)
+    def draw_bullet(self):
+        """ draw the bullet to the screen"""
+        pygame.draw.rect(self.screen,self.color,self.rect)

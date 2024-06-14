@@ -2,6 +2,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
+from bullet import Bullet
 
 class AlienInversion:
     """overall class to mange game assets and behaviour."""
@@ -16,6 +17,7 @@ class AlienInversion:
         self.settings.screen_height = self.screen.get_rect().height
         pygame.display.set_caption("Alien Inversion")
         self.ship = Ship(self)
+        self.bullets = pygame.sprite.Group()
 
 
         #set the background colour.
@@ -26,6 +28,7 @@ class AlienInversion:
         while True:
             self._check_events()
             self.ship.update()
+            self.bullets.update()
             self._update_screen()
             self.clock.tick(60)
 
@@ -47,6 +50,8 @@ class AlienInversion:
             self.ship.moving_left = True
         elif event.key == pygame.K_q:
             sys.exit()
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
 
     def _check_keyup_events(self, event):
         """respond to key release"""
@@ -55,15 +60,21 @@ class AlienInversion:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
 
+    def _fire_bullet(self):
+        """create a new bullect and add it to the bullects group"""
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)
+
     def _update_screen(self):
          #update the screen during each pass through the loop.
-            self.screen.fill(self.settings.bg_colour)
+            self.screen.fill(self.settings.bg_color)
+            for bullet in self.bullets.sprites():
+                bullet.draw_bullet()
             self.ship.blitme()
 
             pygame.display.flip()
 
 
-        
 if __name__=='__main__':
     #make a game instance,and run the game.
     ai=AlienInversion()
