@@ -3,6 +3,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
+from alien import Alien
 
 class AlienInversion:
     """overall class to mange game assets and behaviour."""
@@ -18,7 +19,9 @@ class AlienInversion:
         pygame.display.set_caption("Alien Inversion")
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
+        self.aliens = pygame.sprite.Group()
 
+        self._create_fleet()
 
         #set the background colour.
         self.bg_colour = (230,230,230)
@@ -76,12 +79,19 @@ class AlienInversion:
             if bullet.rect.bottom <= 0:
                     self.bullets.remove(bullet)
 
+    def _create_fleet(self):
+        """create the fleet of aliens"""
+        #make an alien
+        alien = Alien(self)
+        self.aliens.add(alien)
+
     def _update_screen(self):
          #update the screen during each pass through the loop.
             self.screen.fill(self.settings.bg_color)
             for bullet in self.bullets.sprites():
                 bullet.draw_bullet()
             self.ship.blitme()
+            self.aliens.draw(self.screen)
 
             pygame.display.flip()
 
