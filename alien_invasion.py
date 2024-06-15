@@ -32,6 +32,7 @@ class AlienInversion:
             self._check_events()
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
             self.clock.tick(60)
 
@@ -78,6 +79,9 @@ class AlienInversion:
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                     self.bullets.remove(bullet)
+    def _update_aliens(self):
+        """update the position of all aliens in the fleet"""
+        self.aliens.update()
 
     def _create_fleet(self):
         """create the fleet of aliens"""
@@ -87,8 +91,8 @@ class AlienInversion:
         alien_width, alien_height = alien.rect.size
 
         current_x, current_y = alien_width,alien_height
-        while current_y < (self.settings.screen_width - 3 * alien_height):
-            while current_x < (self.settings.screen_width ):
+        while current_y < (self.settings.screen_height - 3 * alien_height):
+            while current_x < (self.settings.screen_width  ):
                 self._create_alien(current_x,current_y)
                 current_x += 2 * alien_width
 
