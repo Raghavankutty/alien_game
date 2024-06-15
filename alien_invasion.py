@@ -29,6 +29,11 @@ class AlienInversion:
             self._check_events()
             self.ship.update()
             self.bullets.update()
+            #get rid of bullect that have disappeared
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+
             self._update_screen()
             self.clock.tick(60)
 
@@ -62,8 +67,9 @@ class AlienInversion:
 
     def _fire_bullet(self):
         """create a new bullect and add it to the bullects group"""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.bullet_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
 
     def _update_screen(self):
          #update the screen during each pass through the loop.
