@@ -107,6 +107,9 @@ class AlienInversion:
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
             self._ship_hit()
 
+        #look for aliens hitting the bottom of the screen
+        self._check_aliens_bottom()
+
     def _create_fleet(self):
         """create the fleet of aliens"""
         #make an alien and keep adding aliens untill there's no room left
@@ -160,6 +163,14 @@ class AlienInversion:
 
         #pause
         sleep(0.5) 
+
+    def _check_aliens_bottom(self):
+        """check if any aliens have reached the bottom of the screen"""
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= self.settings.screen_height:
+                #treat thisw the same as if the ship got hit
+                self._ship_hit()
+                break
 
 
     def _update_screen(self):
