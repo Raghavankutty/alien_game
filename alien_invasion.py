@@ -32,6 +32,9 @@ class AlienInversion:
         #set the background colour.
         self.bg_colour = (230,230,230)
 
+        #start alien invasion in an active state
+        self.game_active = True
+
     def run_game(self):
         """start the main loop for the game."""
         while True:
@@ -150,19 +153,22 @@ class AlienInversion:
 
     def _ship_hit(self):
         """respond to the ship being hit by an alien"""
-        #decrement ships_left
-        self.stats.ships_left -= 1
+        if self.stats.ships_left > 0:
+            #decrement ships_left
+            self.stats.ships_left -= 1
 
-        #get rid of any remaining bullet and aliens
-        self.bullets.empty()
-        self.aliens.empty()
+            #get rid of any remaining bullet and aliens
+            self.bullets.empty()
+            self.aliens.empty()
 
-        #create a new fleet and center the ship
-        self._create_fleet()
-        self.ship.center_ship()
+            #create a new fleet and center the ship
+            self._create_fleet()
+            self.ship.center_ship()
 
-        #pause
-        sleep(0.5) 
+            #pause
+            sleep(0.5) 
+        else:
+            self.game_active =False
 
     def _check_aliens_bottom(self):
         """check if any aliens have reached the bottom of the screen"""
