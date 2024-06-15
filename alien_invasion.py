@@ -1,6 +1,8 @@
 import sys
+from time import sleep
 import pygame
 from settings import Settings
+from game_stats import GameStats
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
@@ -16,7 +18,11 @@ class AlienInversion:
         self.screen=pygame.display.set_mode((0,0),pygame.FULLSCREEN)
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
+        #self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Inversion")
+
+        #create an instance to store game statistics
+        self.stats = GameStats(self)
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
@@ -99,7 +105,7 @@ class AlienInversion:
 
         # look for alien -ship collisions
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
-            print("ship hit  !!!")
+            self._ship_hit()
 
     def _create_fleet(self):
         """create the fleet of aliens"""
@@ -138,6 +144,22 @@ class AlienInversion:
         new_alien.rect.x = x_position
         new_alien.rect.y = y_position
         self.aliens.add(new_alien)
+
+    def _ship_hit(self):
+        """respond to the ship being hit by an alien"""
+        #decrement ships_left
+        self.stats.ships_left -= 1
+
+        #get rid of any remaining bullet and aliens
+        self.bullets.empty()
+        self.aliens.empty()
+
+        #create a new fleet and center the ship
+        self._create_fleet()
+        self.ship.center_ship()
+
+        #pause
+        sleep(0.5) 
 
 
     def _update_screen(self):
