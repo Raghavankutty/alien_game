@@ -1,1 +1,0 @@
-- 2 * alien_width
