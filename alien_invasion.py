@@ -92,8 +92,14 @@ class AlienInversion:
             self._create_fleet()
 
     def _update_aliens(self):
+        """check if the fleet is at an edge ,then update position"""
+        self._check_fleet_edges()
         """update the position of all aliens in the fleet"""
         self.aliens.update()
+
+        # look for alien -ship collisions
+        if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            print("ship hit  !!!")
 
     def _create_fleet(self):
         """create the fleet of aliens"""
@@ -133,10 +139,6 @@ class AlienInversion:
         new_alien.rect.y = y_position
         self.aliens.add(new_alien)
 
-    def _update_aliens(self):
-        """check if the fleet is at an edge ,then update position"""
-        self._check_fleet_edges()
-        self.aliens.update()
 
     def _update_screen(self):
          #update the screen during each pass through the loop.
