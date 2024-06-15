@@ -28,12 +28,7 @@ class AlienInversion:
         while True:
             self._check_events()
             self.ship.update()
-            self.bullets.update()
-            #get rid of bullect that have disappeared
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
-
+            self._update_bullets()
             self._update_screen()
             self.clock.tick(60)
 
@@ -70,6 +65,16 @@ class AlienInversion:
         if len(self.bullets) < self.settings.bullet_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
+
+    def _update_bullets(self):
+        """update position of bullet and get rid of old bullets"""
+        #update bullet positions
+        self.bullets.update()
+
+        #get rid of bullet that have disappeared
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
 
     def _update_screen(self):
          #update the screen during each pass through the loop.
