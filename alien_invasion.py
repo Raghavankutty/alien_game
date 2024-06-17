@@ -44,7 +44,7 @@ class AlienInversion:
         self.game_active = False
 
         #make the play button.
-        self.play_button = Button(self, "Play")
+        self.play_button = Button(self, "Play") 
 
     def run_game(self):
         """start the main loop for the game."""
