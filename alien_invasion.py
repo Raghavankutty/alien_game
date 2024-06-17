@@ -73,6 +73,8 @@ class AlienInversion:
             #reset the game statistics
             self.stats.reset_stats()
             self.game_active =True
+            # hide the mouse curser
+            pygame.mouse.set_visible(False)
 
         #get rid of any remaining bullect and aliens
         self.bullets.empty()
@@ -196,6 +198,7 @@ class AlienInversion:
             sleep(0.5) 
         else:
             self.game_active =False
+            pygame.mouse.set_visible(True)
 
     def _check_aliens_bottom(self):
         """check if any aliens have reached the bottom of the screen"""
