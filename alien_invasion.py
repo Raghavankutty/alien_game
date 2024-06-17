@@ -68,9 +68,10 @@ class AlienInversion:
 
     def _check_play_button(self,mouse_pos):
         """start a new game when the player clicks play"""
-        Button_clicked = self.play_button.rect.collidepoint(mouse_pos)
-        if Button_clicked and not self.game_active:
+        button_clicked = self.play_button.rect.collidepoint(mouse_pos)
+        if button_clicked and not self.game_active:
             #reset the game statistics
+            self.settings.initialize_dynamic_settings()
             self.stats.reset_stats()
             self.game_active =True
             # hide the mouse curser
