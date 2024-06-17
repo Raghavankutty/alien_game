@@ -62,6 +62,14 @@ class AlienInversion:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                self._check_play_button(mouse_pos)
+
+    def _check_play_button(self,mouse_pos):
+        """start a new game when the player clicks play"""
+        if self.play_button.rect.collidepoint(mouse_pos):
+            self.game_active =True
 
     def _check_keydown_events(self,event):
         """respond to keypress"""
