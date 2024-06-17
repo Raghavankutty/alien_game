@@ -29,4 +29,4 @@ class Scoreboard:
 
     def show_score(self):
        """draw score to the screen"""
-       set.screen.blit(self.score_image, self.score_rect)
+       self.screen.blit(self.score_image, self.score_rect)
