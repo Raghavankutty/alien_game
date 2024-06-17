@@ -128,6 +128,7 @@ class AlienInversion:
             #destroy existing bullet and create and create new fleet
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
     def _update_aliens(self):
         """check if the fleet is at an edge ,then update position"""
