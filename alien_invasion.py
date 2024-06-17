@@ -69,7 +69,17 @@ class AlienInversion:
     def _check_play_button(self,mouse_pos):
         """start a new game when the player clicks play"""
         if self.play_button.rect.collidepoint(mouse_pos):
+            #reset the game statistics
+            self.stats.reset_stats()
             self.game_active =True
+
+        #get rid of any remaining bullect and aliens
+        self.bullets.empty()
+        self.aliens.empty()
+
+        #create a new fleet and center the ship
+        self._create_fleet()
+        self.ship.center_ship()
 
     def _check_keydown_events(self,event):
         """respond to keypress"""
