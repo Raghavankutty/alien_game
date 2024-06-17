@@ -35,6 +35,9 @@ class AlienInversion:
         #start alien invasion in an active state
         self.game_active = True
 
+        #start alien inversion in an inactive state.
+        self.game_active = False
+
     def run_game(self):
         """start the main loop for the game."""
         while True:
