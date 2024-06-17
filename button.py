@@ -18,7 +18,7 @@ class Button:
         self.rect.center = self.screen_rect.center
 
         #the button message needs to be prepped only once
-        self._prep_msg(meg)
+        self._prep_msg(msg)
 
     def _prep_msg(self, msg):
         """turn msg into a rendered image and center text on the button"""
