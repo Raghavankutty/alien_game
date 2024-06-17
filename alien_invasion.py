@@ -77,6 +77,7 @@ class AlienInversion:
             #reset the game statistics
             self.stats.reset_stats()
             self.sb.prep_score()
+            self.sb.prep_level()
             self.settings.initialize_dynamic_settings()
             self.stats.reset_stats()
             self.game_active =True
@@ -143,6 +144,10 @@ class AlienInversion:
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+
+            #increase level
+            self.stats.level +=1
+            self.sb.prep_level()
 
     def _update_aliens(self):
         """check if the fleet is at an edge ,then update position"""
