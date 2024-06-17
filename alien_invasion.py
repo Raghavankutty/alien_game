@@ -44,7 +44,7 @@ class AlienInversion:
         self.game_active = False
 
         #make the play button.
-        self.play_button = Button(self, "Play") 
+        self.play_button = Button(self, "Play")
 
     def run_game(self):
         """start the main loop for the game."""
@@ -136,6 +136,7 @@ class AlienInversion:
             for aliens in collisions.values():
                 self.stats.score += self.settings.alien_points * len(aliens)
                 self.sb.prep_score()
+                self.sb.check_high_score()
 
         if not self.aliens:
             #destroy existing bullet and create and create new fleet
