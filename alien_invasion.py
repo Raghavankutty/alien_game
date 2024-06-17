@@ -75,6 +75,8 @@ class AlienInversion:
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
             #reset the game statistics
+            self.stats.reset_stats()
+            self.sb.prep_score()
             self.settings.initialize_dynamic_settings()
             self.stats.reset_stats()
             self.game_active =True
@@ -133,7 +135,7 @@ class AlienInversion:
         if collisions:
             self.stats.score += self.settings.alien_points
             self.sb.prep_score()
-            
+
         if not self.aliens:
             #destroy existing bullet and create and create new fleet
             self.bullets.empty()
