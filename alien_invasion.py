@@ -253,3 +253,5 @@ if __name__=='__main__':
     #make a game instance,and run the game.
     ai=AlienInversion()
     ai.run_game()
+
+#the end
