@@ -70,8 +70,7 @@ For feedback, suggestions, or collaboration opportunities, feel free to reach ou
 - **GitHub:** [Raghavankutty](https://github.com/Raghavankutty)
 - **Email:** raghavankutty35@gmail.com
 
-##Enjoy the game and happy coding! 🎉
+## Enjoy the game and happy coding! 🎉
 
-**Open a Pull Request**
    ```bash
    Copy this content into a `README.md` file in your repository. If you want further customizations, let me know! 😊
