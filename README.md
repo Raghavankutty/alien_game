@@ -26,7 +26,6 @@ alien_game/ ├── assets/ # Game assets (images, sounds, etc.) ├── src
    ```bash
    git clone https://github.com/Raghavankutty/alien_game.git
    cd alien_game
-   pip install pygame
 1. Install dependenicies:
    ```bash
    pip install pygame
