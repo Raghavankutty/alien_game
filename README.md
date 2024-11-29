@@ -39,6 +39,7 @@ alien_game/ ├── assets/ # Game assets (images, sounds, etc.) ├── src
 1. Use arrow keys to navigate your spaceship.
 2. Use the spacebar or mouse click to shoot lasers at alien ships.
 3. Dodge incoming alien attacks to survive and progress to higher levels.
+4. press Q for quit
 
 ## 🤝 Contributing
 
